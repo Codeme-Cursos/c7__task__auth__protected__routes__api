@@ -31,18 +31,18 @@ npm i sequelize
 ```bash
 npm i morgan
 ```
-##### Instalación de Babel, permite usar código moderno de JS en nodeJS 
+##### Instalación de Babel, permite usar código moderno de JS en nodeJS.
 [https://babeljs.io/docs/en/usage]
 ```bash
 npm i @babel/polyfill @babel/runtime
 ```
 
-##### Instalación de Helmet, permite configurar cabezeras http para mejorar la seguridad de la api 
+##### Instalación de Helmet, permite configurar cabezeras http para mejorar la seguridad de la api. 
 ```bash
 npm i helmet
 ```
 
-##### Instalación de Compression, permite comprimir resupestas y así ahorrar recursos en la transferencia de datos
+##### Instalación de Compression, permite comprimir resupestas y así ahorrar recursos en la transferencia de datos.
 ```bash
 npm i compression 
 ```
@@ -58,10 +58,19 @@ npm i cors
 npm i ejs
 ```
 
+##### Instalación de Json Web Token, permite generar tokens de usuarios para consultar información de forma segura.
+```bash
+npm i jsonwebtoken
+```
+
+##### Instalación de Bcrypt, permite cifrar datos como las contraseñas.
+```bash
+npm i bcryptjs
+```
 
 ##### Todos los Módulos principales
 ```bash
-npm i express pg pg-hstore sequelize morgan @babel/polyfill @babel/runtime dotenv helmet compression cors ejs
+npm i express pg pg-hstore sequelize morgan @babel/polyfill @babel/runtime dotenv helmet compression cors ejs jsonwebtoken bcryptjs
 ```
 
 ## Instalación de Módulos de Desarrollo
@@ -93,6 +102,7 @@ Esto:
 Por:
 ```json
 "scripts": {
+    //Utiliza babel para convertir el código de desarrollo a codigo de producción.
     "build": "babel src --out-dir dist",
     "start": "node -r dotenv/config dist/index.js"
 }
