@@ -24,13 +24,7 @@ var getTasks = /*#__PURE__*/function () {
           case 0:
             _context.prev = 0;
             _context.next = 3;
-            return _task["default"].findAll({
-              include: {
-                model: _user["default"],
-                as: 'user',
-                attributes: ['username', 'email']
-              }
-            });
+            return _task["default"].findAll();
 
           case 3:
             gotTasks = _context.sent;
@@ -92,12 +86,13 @@ var getTaskById = /*#__PURE__*/function () {
             return _task["default"].findOne({
               where: {
                 id: _id
-              },
-              include: {
-                model: _user["default"],
-                as: 'user',
-                attributes: ['username', 'email']
               }
+              /* include: {
+                  model: UserModel,
+                  as: 'user',
+                  attributes: ['username', 'email']
+              } */
+
             });
 
           case 9:

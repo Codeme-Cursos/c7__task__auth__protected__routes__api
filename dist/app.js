@@ -28,8 +28,6 @@ var _task = _interopRequireDefault(require("./routes/task.route"));
 var app = (0, _express["default"])();
 var PORT = process.env.PORT; //configurations for render templates
 
-/* app.set('views', path.join(__dirname, 'views')); */
-
 app.set('view engine', 'ejs'); //middlewares
 
 app.use((0, _morgan["default"])('dev'));
