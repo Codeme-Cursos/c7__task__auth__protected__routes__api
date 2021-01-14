@@ -12,12 +12,10 @@ import authRoutes from './routes/auth.route';
 import taskRoutes from './routes/task.route';
 
 const app = express();
-
-
 const { PORT } = process.env;
 
 //configurations for render templates
-app.set('views', path.join(__dirname, 'views'));
+/* app.set('views', path.join(__dirname, 'views')); */
 app.set('view engine', 'ejs');
 
 //middlewares

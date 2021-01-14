@@ -7,7 +7,7 @@ export const getTasks = async (req, res) => {
             include: {
                 model: UserModel,
                 as: 'user',
-                attributes: ['id', 'username', 'email']
+                attributes: ['username', 'email']
             }
         });
         res.status(200).json({
@@ -37,7 +37,7 @@ export const getTaskById = async (req, res) => {
                 include: {
                     model: UserModel,
                     as: 'user',
-                    attributes: ['id', 'username', 'email']
+                    attributes: ['username', 'email']
                 }
             });
             res.status(200).json({

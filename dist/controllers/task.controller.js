@@ -28,7 +28,7 @@ var getTasks = /*#__PURE__*/function () {
               include: {
                 model: _user["default"],
                 as: 'user',
-                attributes: ['id', 'username', 'email']
+                attributes: ['username', 'email']
               }
             });
 
@@ -96,7 +96,7 @@ var getTaskById = /*#__PURE__*/function () {
               include: {
                 model: _user["default"],
                 as: 'user',
-                attributes: ['id', 'username', 'email']
+                attributes: ['username', 'email']
               }
             });
 
