@@ -23,9 +23,9 @@ app.set('view engine', 'ejs');
 //middlewares
 app.use(morgan('dev'));
 app.use(json());
-app.use(cors());
-app.use(compression());
 app.use(helmet());
+app.use(compression());
+app.use(cors());
 
 const prefix = '/api';
 
