@@ -3,13 +3,13 @@ import UserModel from '../models/user.model';
 
 export const getTasks = async (req, res) => {
     try {
-        let gotTasks = await TaskModel.findAll({
+        let gotTasks = await TaskModel.findAll(/* {
             include: {
                 model: UserModel,
                 as: 'user',
                 attributes: ['username', 'email']
             }
-        });
+        } */);
         res.status(200).json({
             data: gotTasks
         });
@@ -34,11 +34,11 @@ export const getTaskById = async (req, res) => {
                 where: {
                     id
                 },
-                include: {
+                /* include: {
                     model: UserModel,
                     as: 'user',
                     attributes: ['username', 'email']
-                }
+                } */
             });
             res.status(200).json({
                 data: gotTask
