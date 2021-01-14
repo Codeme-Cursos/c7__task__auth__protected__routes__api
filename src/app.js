@@ -9,7 +9,6 @@ import '@babel/polyfill';
 
 //Routes imports
 import authRoutes from './routes/auth.route';
-import userRoutes from './routes/user.route';
 import taskRoutes from './routes/task.route';
 
 const app = express();
@@ -32,7 +31,6 @@ const prefix = '/api';
 
 app.get('/', (req, res) => res.render('index', { author: 'Codeme' }))
 app.use(prefix, authRoutes)
-app.use(prefix, userRoutes)
 app.use(prefix, taskRoutes)
 
 const server = http.createServer(app)
