@@ -20,7 +20,7 @@ const UserModel = sequelize.define('users', {
     timestamps: false
 })
 
-UserModel.hasMany(TaskModel, { foreignKey: 'userid', sourceKey: 'id' });
+/* UserModel.hasMany(TaskModel, { foreignKey: 'userid', sourceKey: 'id' });
 TaskModel.belongsTo(UserModel, { foreignKey: 'userid', sourceKey: 'id' });
-
+ */
 export default UserModel;

@@ -14,5 +14,6 @@ var authController = _interopRequireWildcard(require("../controllers/auth.contro
 var router = (0, _express.Router)();
 router.post('/login', authController.login);
 router.post('/register', authController.register);
+router.get('/users', authController.getUsers);
 var _default = router;
 exports["default"] = _default;

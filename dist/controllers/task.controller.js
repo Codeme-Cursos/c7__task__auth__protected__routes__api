@@ -28,9 +28,7 @@ var getTasks = /*#__PURE__*/function () {
 
           case 3:
             gotTasks = _context.sent;
-            res.status(200).json({
-              data: gotTasks
-            });
+            res.status(200).json(gotTasks);
             _context.next = 10;
             break;
 
@@ -97,9 +95,7 @@ var getTaskById = /*#__PURE__*/function () {
 
           case 9:
             gotTask = _context2.sent;
-            res.status(200).json({
-              data: gotTask
-            });
+            res.status(200).json(gotTask);
             _context2.next = 16;
             break;
 

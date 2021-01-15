@@ -53,13 +53,13 @@ export const getTaskById = async (req, res) => {
 
 export const createTask = async (req, res) => {
     try {
-        const { responsable, description, userid } = req.body;
+        const { responsable, description/* , userid  */} = req.body;
         let postedTask = await TaskModel.create({
             responsable,
             description,
-            userid
+       /*      userid */
         }, {
-            fields: ['responsable', 'description', 'userid']
+            fields: ['responsable', 'description'/* , 'userid' */]
         });
         if (postedTask) {
             return res.status(201).json({
