@@ -10,9 +10,7 @@ export const getTasks = async (req, res) => {
                 attributes: ['username', 'email']
             }
         } */);
-        res.status(200).json({
-            data: gotTasks
-        });
+        res.status(200).json(gotTasks);
     } catch (error) {
         res.status(500).json({
             message: `Error: ${error}`
@@ -40,9 +38,7 @@ export const getTaskById = async (req, res) => {
                     attributes: ['username', 'email']
                 } */
             });
-            res.status(200).json({
-                data: gotTask
-            });
+            res.status(200).json(gotTask);
         } catch (error) {
             res.status(500).json({
                 message: `Error: ${error}`
