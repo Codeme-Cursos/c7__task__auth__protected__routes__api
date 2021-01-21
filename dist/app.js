@@ -6,8 +6,6 @@ var _interopRequireWildcard = require("@babel/runtime/helpers/interopRequireWild
 
 var _express = _interopRequireWildcard(require("express"));
 
-var _path = _interopRequireDefault(require("path"));
-
 var _http = _interopRequireDefault(require("http"));
 
 var _morgan = _interopRequireDefault(require("morgan"));
@@ -19,6 +17,8 @@ var _compression = _interopRequireDefault(require("compression"));
 var _helmet = _interopRequireDefault(require("helmet"));
 
 require("@babel/polyfill");
+
+var _user = _interopRequireDefault(require("./routes/user.route"));
 
 var _auth = _interopRequireDefault(require("./routes/auth.route"));
 
@@ -36,13 +36,14 @@ app.use((0, _helmet["default"])());
 app.use((0, _compression["default"])());
 app.use((0, _cors["default"])());
 var prefix = '/api';
+app.use(prefix, _user["default"]);
+app.use(prefix, _auth["default"]);
+app.use(prefix, _task["default"]);
 app.get('/', function (req, res) {
   return res.render('index', {
     author: 'Codeme'
   });
 });
-app.use(prefix, _auth["default"]);
-app.use(prefix, _task["default"]);
 
 var server = _http["default"].createServer(app);
 

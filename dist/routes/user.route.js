@@ -11,15 +11,12 @@ exports["default"] = void 0;
 
 var _express = require("express");
 
-var taskController = _interopRequireWildcard(require("../controllers/task.controller"));
+var userController = _interopRequireWildcard(require("../controllers/user.controller"));
 
 var _verifyToken = _interopRequireDefault(require("../middlewares/verifyToken"));
 
 var router = (0, _express.Router)();
-router.get('/tasks', taskController.getTasks);
-router.get('/task/:id', taskController.getTaskById);
-router.post('/tasks', _verifyToken["default"], taskController.createTask);
-router.patch('/task/:id', _verifyToken["default"], taskController.patchTaskById);
-router["delete"]('/task/:id', _verifyToken["default"], taskController.deleteTaskById);
+router.get('/users', userController.getUsers);
+router["delete"]('/user/:id', _verifyToken["default"], userController.deleteUserById);
 var _default = router;
 exports["default"] = _default;

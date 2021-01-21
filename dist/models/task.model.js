@@ -14,16 +14,16 @@ var _database = require("../database/database");
 var TaskModel = _database.sequelize.define('tasks', {
   id: {
     type: _sequelize["default"].INTEGER,
+    allowNull: false,
     primaryKey: true
   },
   responsable: {
-    type: _sequelize["default"].TEXT
+    type: _sequelize["default"].TEXT,
+    allowNull: false
   },
   description: {
-    type: _sequelize["default"].TEXT
-  },
-  userid: {
-    type: _sequelize["default"].INTEGER
+    type: _sequelize["default"].TEXT,
+    allowNull: false
   }
 }, {
   timestamps: false

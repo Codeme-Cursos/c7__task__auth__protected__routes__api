@@ -11,34 +11,28 @@ var _sequelize = _interopRequireDefault(require("sequelize"));
 
 var _database = require("../database/database");
 
-var _task = _interopRequireDefault(require("./task.model"));
-
 var UserModel = _database.sequelize.define('users', {
   id: {
     type: _sequelize["default"].INTEGER,
+    allowNull: false,
     primaryKey: true
   },
   username: {
-    type: _sequelize["default"].TEXT
+    type: _sequelize["default"].TEXT,
+    allowNull: false
   },
   email: {
-    type: _sequelize["default"].TEXT
+    type: _sequelize["default"].TEXT,
+    allowNull: false,
+    unique: true
   },
   password: {
-    type: _sequelize["default"].TEXT
+    type: _sequelize["default"].TEXT,
+    allowNull: false
   }
 }, {
-  timestamps: false
-});
-
-UserModel.hasMany(_task["default"], {
-  foreignKey: 'userid',
-  sourceKey: 'id'
-});
-
-_task["default"].belongsTo(UserModel, {
-  foreignKey: 'userid',
-  sourceKey: 'id'
+  timestamps: false,
+  versionKey: false
 });
 
 var _default = UserModel;

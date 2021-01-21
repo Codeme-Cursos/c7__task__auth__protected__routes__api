@@ -45,7 +45,7 @@ export const createTask = async (req, res) => {
         let postedTask = await TaskModel.create({
             responsable,
             description,
-           
+
         }, {
             fields: ['responsable', 'description']
         });
@@ -100,15 +100,13 @@ export const deleteTaskById = async (req, res) => {
     })
     if (currentTaks) {
         try {
-            let deletedTask = await TaskModel.destroy({
+            await TaskModel.destroy({
                 where: {
                     id
                 }
             })
             return res.status(200).json({
-                message: 'Task deleted successfully',
-                count: deletedTask,
-                deleted: id
+                message: 'Task deleted successfully'
             });
         } catch (error) {
             return res.status(500).json({
