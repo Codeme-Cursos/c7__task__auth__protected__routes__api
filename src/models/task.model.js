@@ -14,10 +14,7 @@ const TaskModel = sequelize.define('tasks', {
     description: {
         type: Sequelize.TEXT,
         allowNull: false,
-    },
-    /*     userid: {
-            type: Sequelize.INTEGER
-        } */
+    }
 }, {
     timestamps: false
 })

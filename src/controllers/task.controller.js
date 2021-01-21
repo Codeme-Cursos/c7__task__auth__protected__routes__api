@@ -2,18 +2,12 @@ import TaskModel from '../models/task.model';
 
 export const getTasks = async (req, res) => {
     try {
-        let gotTasks = await TaskModel.findAll(/* {
-            include: {
-                model: UserModel,
-                as: 'user',
-                attributes: ['username', 'email']
-            }
-        } */);
+        let gotTasks = await TaskModel.findAll();
         return res.status(200).json(gotTasks);
     } catch (error) {
         return res.status(500).json({
             message: `Error: ${error}`
-        });
+        })
     }
 }
 
@@ -30,46 +24,41 @@ export const getTaskById = async (req, res) => {
             let gotTask = await TaskModel.findOne({
                 where: {
                     id
-                },
-                /* include: {
-                    model: UserModel,
-                    as: 'user',
-                    attributes: ['username', 'email']
-                } */
+                }
             });
             return res.status(200).json(gotTask);
         } catch (error) {
             return res.status(500).json({
                 message: `Error: ${error}`
-            });
+            })
         }
     } else {
         return res.status(404).json({
             message: `Task not found`
-        });
+        })
     }
 }
 
 export const createTask = async (req, res) => {
     try {
-        const { responsable, description/* , userid  */ } = req.body;
+        const { responsable, description } = req.body;
         let postedTask = await TaskModel.create({
             responsable,
             description,
-            /*      userid */
+           
         }, {
-            fields: ['responsable', 'description'/* , 'userid' */]
+            fields: ['responsable', 'description']
         });
         if (postedTask) {
             return res.status(201).json({
                 message: 'Task created successfully',
                 data: postedTask
-            });
+            })
         }
     } catch (error) {
         return res.status(500).json({
             message: `Error: ${error}`
-        });
+        })
     }
 }
 
@@ -98,7 +87,7 @@ export const patchTaskById = async (req, res) => {
     } else {
         return res.status(404).json({
             message: `Task not Found`
-        });
+        })
     }
 }
 
@@ -108,14 +97,14 @@ export const deleteTaskById = async (req, res) => {
         where: {
             id
         }
-    });
+    })
     if (currentTaks) {
         try {
             let deletedTask = await TaskModel.destroy({
                 where: {
                     id
                 }
-            });
+            })
             return res.status(200).json({
                 message: 'Task deleted successfully',
                 count: deletedTask,
