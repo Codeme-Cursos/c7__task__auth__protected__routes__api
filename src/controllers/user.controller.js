@@ -19,7 +19,7 @@ export const deleteUserById = async (req, res) => {
     if (currentUser) {
         try {
             await UserModel.destroy({
-                where: id
+                where: { id }
             })
             return res.status(200).json({
                 message: 'User deleted successfully'
