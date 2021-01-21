@@ -26,9 +26,9 @@ app.use(cors());
 
 const prefix = '/api';
 
-app.get('/', (req, res) => res.render('index', { author: 'Codeme' }))
 app.use(prefix, authRoutes)
 app.use(prefix, taskRoutes)
+app.get('/', (req, res) => res.render('index', { author: 'Codeme' }))
 
 const server = http.createServer(app)
 server.listen(PORT, () => {

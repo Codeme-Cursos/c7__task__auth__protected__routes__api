@@ -1,6 +1,5 @@
 import Sequelize from 'sequelize';
 import { sequelize } from '../database/database';
-import TaskModel from './task.model';
 
 const UserModel = sequelize.define('users', {
     id: {
@@ -11,15 +10,18 @@ const UserModel = sequelize.define('users', {
         type: Sequelize.TEXT
     },
     email: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
+        unique: true
     },
     password: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false
     }
 }, {
-    timestamps: false
+    timestamps: false,
+    versionKey: false
 })
-
 /* UserModel.hasMany(TaskModel, { foreignKey: 'userid', sourceKey: 'id' });
 TaskModel.belongsTo(UserModel, { foreignKey: 'userid', sourceKey: 'id' });
  */
