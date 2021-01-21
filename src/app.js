@@ -1,5 +1,4 @@
 import express, { json } from 'express';
-import path from 'path';
 import http from 'http';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -8,6 +7,7 @@ import helmet from 'helmet';
 import '@babel/polyfill';
 
 //Routes imports
+import userRoutes from './routes/user.route';
 import authRoutes from './routes/auth.route';
 import taskRoutes from './routes/task.route';
 
@@ -26,6 +26,7 @@ app.use(cors());
 
 const prefix = '/api';
 
+app.use(prefix, userRoutes)
 app.use(prefix, authRoutes)
 app.use(prefix, taskRoutes)
 app.get('/', (req, res) => res.render('index', { author: 'Codeme' }))

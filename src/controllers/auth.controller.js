@@ -8,7 +8,7 @@ export const register = async (req, res) => {
         where: {
             email
         }
-    });
+    })
     if (!user) {
         try {
             const salt = await bcrypt.genSalt(8);
@@ -20,15 +20,15 @@ export const register = async (req, res) => {
             }, {
                 fields: ['username', 'email', 'password']
             })
-            res.status(201).json(registeredUser)
+            return res.status(201).json(registeredUser)
         } catch (error) {
-            res.status(500).json({
-                message: error
+            return res.status(500).json({
+                message: `Error: ${error}`
             })
         }
     } else {
-        res.status(500).json({
-            message: 'Email ya registrado'
+        return res.status(500).json({
+            message: 'Email already exist'
         })
     }
 }
@@ -43,9 +43,11 @@ export const login = async (req, res) => {
     if (user) {
         try {
             const checkPassword = await bcrypt.compare(password, user.password)
-            const token = jwt.sign({ user }, process.env.JWT_SECRET)
+            const token = jwt.sign({ user }, process.env.JWT_SECRET, {
+                expiresIn: 86400 //24 horas en segundos
+            })
             if (checkPassword) {
-                res.status(200).json({
+                return res.status(200).json({
                     user: {
                         username: user.username,
                         email: user.email
@@ -53,29 +55,19 @@ export const login = async (req, res) => {
                     token
                 })
             } else {
-                res.status(400).json({
-                    message: 'Contraseña incorrecta'
+                return res.status(400).json({
+                    message: 'Wrong password'
                 })
             }
         } catch (error) {
-            res.status(500).json({
-                message: error
+            return res.status(500).json({
+                message: `Error: ${error}`
             })
         }
     } else {
-        res.status(404).json({
-            message: 'Usuario no existe'
+        return res.status(404).json({
+            message: 'User not found'
         })
     }
 }
 
-export const getUsers = async (req, res) => {
-    try {
-        let gotUsers = await UserModel.findAll();
-        res.status(200).json(gotUsers);
-    } catch (error) {
-        res.status(500).json({
-            message: `Error: ${error}`
-        });
-    }
-}

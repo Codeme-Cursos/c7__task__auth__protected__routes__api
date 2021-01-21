@@ -4,18 +4,21 @@ import { sequelize } from '../database/database';
 const TaskModel = sequelize.define('tasks', {
     id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         primaryKey: true
     },
     responsable: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
     },
     description: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
     },
-/*     userid: {
-        type: Sequelize.INTEGER
-    } */
-},{
+    /*     userid: {
+            type: Sequelize.INTEGER
+        } */
+}, {
     timestamps: false
 })
 

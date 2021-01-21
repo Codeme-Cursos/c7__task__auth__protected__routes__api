@@ -4,10 +4,12 @@ import { sequelize } from '../database/database';
 const UserModel = sequelize.define('users', {
     id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         primaryKey: true
     },
     username: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
     },
     email: {
         type: Sequelize.TEXT,
