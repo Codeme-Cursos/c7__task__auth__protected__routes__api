@@ -1,5 +1,4 @@
 import express, { json } from 'express';
-import path from 'path';
 import http from 'http';
 import morgan from 'morgan';
 import cors from 'cors';
@@ -8,32 +7,29 @@ import helmet from 'helmet';
 import '@babel/polyfill';
 
 //Routes imports
-import authRoutes from './routes/auth.route';
 import userRoutes from './routes/user.route';
+import authRoutes from './routes/auth.route';
 import taskRoutes from './routes/task.route';
 
 const app = express();
-
-
 const { PORT } = process.env;
 
 //configurations for render templates
-app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 //middlewares
 app.use(morgan('dev'));
 app.use(json());
-app.use(cors());
-app.use(compression());
 app.use(helmet());
+app.use(compression());
+app.use(cors());
 
 const prefix = '/api';
 
-app.get('/', (req, res) => res.render('index', { author: 'Codeme' }))
-app.use(prefix, authRoutes)
 app.use(prefix, userRoutes)
+app.use(prefix, authRoutes)
 app.use(prefix, taskRoutes)
+app.get('/', (req, res) => res.render('index', { author: 'Codeme' }))
 
 const server = http.createServer(app)
 server.listen(PORT, () => {
